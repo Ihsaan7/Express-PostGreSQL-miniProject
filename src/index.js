@@ -3,6 +3,8 @@ import cors from "cors"
 import dotenv from "dotenv"
 dotenv.config();
 
+import { errorHandler } from "./middlewares/errorHandling.js";
+import userRouter from "./routes/user.route.js"
 import pool from "./config/db.js";
 
 const app  = express()
@@ -13,6 +15,7 @@ app.use(express.json())
 app.use(cors())
 
 // Routes
+app.use("/api/v1", userRouter);
 
 // Errors
 
