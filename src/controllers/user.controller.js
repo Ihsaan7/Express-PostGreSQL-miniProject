@@ -36,7 +36,7 @@ export const getUserById = AsyncHandler(async(req , res)=>
         )
     })
 
-export const updatedUser = AsyncHandler(async(req , res)=>
+export const updateUser = AsyncHandler(async(req , res)=>
     {
         const {name , email} = req.body
         if(!name || !email) throw new ApiError(400, "Both fields are required")
