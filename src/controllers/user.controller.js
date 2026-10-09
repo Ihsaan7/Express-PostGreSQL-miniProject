@@ -44,7 +44,7 @@ export const updateUser = AsyncHandler(async(req , res)=>
         const  {id} = req.params
         if(!id) throw new ApiError(404 , "No id found!")
 
-        const updatedUser = await updateUserService(name , email ,id);
+        const updatedUser = await updateUserService(id , name , email);
         if(!updatedUser)throw new ApiError(404, "user not found")
         
             return res.status(200).json(
