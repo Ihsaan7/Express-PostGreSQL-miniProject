@@ -6,6 +6,7 @@ dotenv.config();
 import { errorHandler } from "./middlewares/error.middleware.js";
 import userRouter from "./routes/user.route.js"
 import pool from "./config/db.js";
+import createUserTable from "./data/createUserTable.js";
 
 const app  = express()
 const PORT = process.env.PORT || 3000
@@ -15,6 +16,8 @@ app.use(express.json())
 app.use(errorHandler)
 app.use(cors())
 
+// Create table before server starts
+createUserTable()
 
 // Routes
 app.use("/api/v1", userRouter);
