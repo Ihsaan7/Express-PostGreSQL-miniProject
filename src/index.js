@@ -3,7 +3,7 @@ import cors from "cors"
 import dotenv from "dotenv"
 dotenv.config();
 
-import { errorHandler } from "./middlewares/errorHandling.js";
+import { errorHandler } from "./middlewares/error.middleware.js";
 import userRouter from "./routes/user.route.js"
 import pool from "./config/db.js";
 
@@ -12,7 +12,9 @@ const PORT = process.env.PORT || 3000
 
 // Middleware
 app.use(express.json())
+app.use(errorHandler)
 app.use(cors())
+
 
 // Routes
 app.use("/api/v1", userRouter);
